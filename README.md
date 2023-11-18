@@ -10,6 +10,46 @@ The Inventory Management System is a Java-based application designed to manage c
 - **Sales Order Creation:** Customers can create sales orders by searching for products, adding them to the order, and placing the order.
 - **Persistence:** Utilizes Jakarta Persistence (JPA) for data storage and retrieval.
 
+### ER-Diagram
+
+ +---------------------+         +---------------------+
+ |       Customer      |         |       Product       |
+ +---------------------+         +---------------------+
+ | customerId (PK)     |         | productId (PK)      |
+ | name                |         | name                |
+ | username            |         | category            |
+ | password            |         | brand               |
+ | email               |         | price               |
+ | address             |         | stockQuantity       |
+ | isDeleted           |         | lowStockAlertThreshold|
+ +---------------------+         | isDeleted           |
+                                +---------------------+
+                                       |
+                                       |
+                                       |
+                             +---------------------+
+                             |     SalesOrder      |
+                             +---------------------+
+                             | orderId (PK)        |
+                             +---------------------+
+                             |                     |
+                             |                     |
+                             |                     |
+                             |                     |
+                             |                     |
+                             v                     v
+               +---------------------+ 1    N +---------------------+
+               |      OrderItem      |<--------|       Product       |
+               +---------------------+         +---------------------+
+               | orderItemId (PK)    |         | productId (FK)      |
+               +---------------------+         +---------------------+
+               | quantity            |         |                     |
+               +---------------------+         |                     |
+                                               +---------------------+
+
+
+
+
 ## Getting Started
 
 ### Prerequisites
